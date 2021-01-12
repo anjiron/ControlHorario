@@ -3,6 +3,7 @@ import math
 
 import db_control as db
 
+# Función que lee la base de datos y añade columnas que se necesitarán
 def ajust_data():
     datos_db = db.get_all_data('control_horario', 'tabla_control')
     datos_db["fecha"]=pandas.to_datetime(datos_db["fecha"], dayfirst=True, yearfirst=False)
@@ -51,7 +52,9 @@ def generate_excel(datos_a_generar, year, mes):
     horas, minutos = suma_horas_totales(datos_a_generar)
     tiempo = str(int(horas)) + ':' + str(int(minutos))
 
-    datos_a_generar['total_trabajado'] = tiempo
+    datos_a_generar.loc[len(datos_a_generar),'total_trabajado'] = tiempo
+
+    # datos_a_generar['total_trabajado'] = tiempo
 
     # h_trabajadas = pandas.DataFrame([tiempo], columns = ['total_trabajado'])   
     # datos_a_generar.append(h_trabajadas)
