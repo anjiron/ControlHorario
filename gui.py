@@ -1,6 +1,7 @@
 import tkinter as tk
 import datetime
 import datos
+import os
 
 import db_control as db
 
@@ -47,7 +48,9 @@ def run_gui():
         hora_salida.set(hora_fin_actual)
 
     def recuperar_datos():
-        data_recov = db.load_pickle('C:/Users/imdt/Documents/control_horario', 'temporal_data')
+        abs_path = os.path.split(os.path.abspath(__file__))
+        path = abs_path[0]
+        data_recov = db.load_pickle(path, 'temporal_data')
         fecha.set(data_recov['fecha'])
         hora_entrada.set(data_recov['hora_entrada'])
 

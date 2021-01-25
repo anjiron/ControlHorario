@@ -1,6 +1,6 @@
 import datetime
 import pandas
-
+import os
 
 import db_control as db
 import gui
@@ -31,14 +31,21 @@ def horas_trabajadas(string_entrada, string_salida):
 # db.save_pickle({'fecha': 0, 'hora_entrada': 0}, 'C:/Users/imdt/Documents/control_horario', 'temporal_data')
 
 
-fecha, hora_entrada, hora_salida = gui.run_gui()
+def run():
+    abs_path = os.path.split(os.path.abspath(__file__))
+    path = abs_path[0]
+    fecha, hora_entrada, hora_salida = gui.run_gui()
 
-if complete_check(hora_salida) is False:
-    temp_data = {'fecha': fecha, 'hora_entrada': hora_entrada}
-    db.save_pickle(temp_data, 'C:/Users/imdt/Documents/control_horario', 'temporal_data')
-elif complete_check(hora_salida) is True:
-    horas_diarias = horas_trabajadas(hora_entrada, hora_salida)
-    save_day(fecha, hora_entrada, hora_salida, horas_diarias)
-else:
-    print('ERROR')
+    if complete_check(hora_salida) is False:
+        temp_data = {'fecha': fecha, 'hora_entrada': hora_entrada}
+        db.save_pickle(temp_data, path, 'temporal_data')
+    elif complete_check(hora_salida) is True:
+        horas_diarias = horas_trabajadas(hora_entrada, hora_salida)
+        save_day(fecha, hora_entrada, hora_salida, horas_diarias)
+    else:
+        print('ERROR')
+
+
+run()
+
 
