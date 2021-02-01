@@ -1,0 +1,4 @@
+Instrucciones de instalación de Control Horario
+
+- Instalar Python 3.9.0
+- Añadir Python al PATH en la primera ventana de instalación ( marcar "Add Python to PATH")

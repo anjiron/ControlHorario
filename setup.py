@@ -28,7 +28,6 @@ class setup():
 
     def move_files(self, file_name, new_path, old_path):
         sistema = sys.platform
-        print('fasjdfñlaksdjfñlaksdjfasldkfjñlasdfkja', sistema)
         if sistema == 'linux':
             os.system('sudo cp -R ' + str(old_path) + str(file_name) + " " + str(new_path))
         elif sistema == 'win32':

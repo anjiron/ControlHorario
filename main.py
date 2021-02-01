@@ -12,11 +12,9 @@ def complete_check(hora_salida):
     else:
         return True
 
-
 def save_day(fecha, hora_entrada, hora_salida, horas_diarias):
     entrada_db = (fecha, hora_entrada, hora_salida, horas_diarias)
     db.insert_data_db("control_horario", entrada_db)
-
 
 def horas_trabajadas(string_entrada, string_salida):
 
@@ -25,11 +23,6 @@ def horas_trabajadas(string_entrada, string_salida):
 
     horas = hora_salida - hora_entrada
     return str(horas)
-
-
-# db.new_db("control_horario")
-# db.save_pickle({'fecha': 0, 'hora_entrada': 0}, 'C:/Users/imdt/Documents/control_horario', 'temporal_data')
-
 
 def run():
     abs_path = os.path.split(os.path.abspath(__file__))
