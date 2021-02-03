@@ -1,5 +1,6 @@
 import pandas
 import math
+import os
 
 import db_control as db
 
@@ -54,17 +55,15 @@ def generate_excel(datos_a_generar, year, mes):
 
     datos_a_generar.loc[len(datos_a_generar),'total_trabajado'] = tiempo
 
-    # datos_a_generar['total_trabajado'] = tiempo
-
-    # h_trabajadas = pandas.DataFrame([tiempo], columns = ['total_trabajado'])   
-    # datos_a_generar.append(h_trabajadas)
-    # df.drop(['B', 'E'], axis='columns', inplace=True)
     if mes is None:
         datos_a_generar.drop(['day', 'horas', 'minutos','month','year', 'index'], axis='columns', inplace=True)
     else:
         datos_a_generar.drop(['day', 'horas', 'minutos','month','year', 'level_0', 'index'], axis='columns', inplace=True)
-
-    datos_a_generar.to_excel( str(excel_name) + '.xlsx', sheet_name= excel_name)
+    
+    abs_path = os.path.split(os.path.abspath(__file__))
+    path = abs_path[0]
+    
+    datos_a_generar.to_excel(str(path) + '/excel/' + str(excel_name) + '.xlsx', sheet_name= excel_name)
 
 
 def suma_horas_totales(datos_db):

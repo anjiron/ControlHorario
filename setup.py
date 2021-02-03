@@ -10,9 +10,11 @@ class setup():
     def __init__(self):
         abs_path = os.path.split(os.path.abspath(__file__))
         path = abs_path[0]
+        os.mkdir(str(path) + '\excel')    
 
         self.install_pandas()
         self.install_pyinstaller()
+        self.install_openpyxl()
         self.crear_db_and_pickle(path)
         self.crear_exe_main(path)
 
@@ -21,6 +23,9 @@ class setup():
 
     def install_pyinstaller(self):
         os.system('pip install pyinstaller')
+
+    def install_openpyxl(self):
+        os.system('pip install openpyxl')
 
     def crear_db_and_pickle(self, path):
         db.new_db("control_horario")
