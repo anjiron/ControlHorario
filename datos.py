@@ -89,7 +89,6 @@ def suma_horas_totales(datos_db):
     horas_min, minutos_totales = suma_min_df(datos_db)
 
     horas_totales = horas_totales + horas_min
-    print('El total trabajado es ' + str(horas_totales) + ' horas y ' + str(minutos_totales) + ' minutos' )
     return horas_totales, minutos_totales
 
 def get_year(year):

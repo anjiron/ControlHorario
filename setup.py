@@ -45,7 +45,7 @@ class setup():
         self.move_files('\main.exe', path, old_path)
         shutil.rmtree(old_path)
         shutil.rmtree(str(path) + '/build')
-        os.remove(str(path) + '/main.spec')
+        # os.remove(str(path) + '/main.spec')
 
 
 if __name__ == '__main__':
